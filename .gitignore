@@ -1,0 +1,5 @@
+.ipynb_checkpoints
+.DS_Store
+*.tar
+*.csv
+input/__pycache__/
