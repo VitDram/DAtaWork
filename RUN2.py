@@ -44,7 +44,7 @@ df['emoji'] = df.text.map(lambda x: len(re.findall('[\U0001f600-\U0001f650]', x)
 df['www'] = df.text.map(lambda x: x.lower().count('www'))
 
 #Наличие ссылки
-df['have_www'] = df.text.map(lambda x: len(str(x)) for x in x if re.compile('www').search(x))
+df['have_www'] = df.text.map(lambda x: len(str(x)) for x in x if re.compile('www').search(x) print(int(1)))
 
 # Убираем проценты, перегоняем данные в дробный числовой формат
 df.likes_per_views = df.likes_per_views.map(lambda x: re.sub('%', '', x)).astype(np.float32)
