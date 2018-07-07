@@ -29,7 +29,7 @@ df['nums'] = df.text.map(lambda x: len(re.findall('[0-9]', x)))
 df['exclamations'] = df.text.map(lambda x: x.count('!'))
 
 #Число слов
-df['word'] = df.text.map(lambda x: x.count(' ') - 1)
+df['word'] = df.text.map(lambda x: x.split())
 
 #Встреча велосипеда
 df['velos'] = df.text.map(lambda x: x.lower().count('велосипед'))
