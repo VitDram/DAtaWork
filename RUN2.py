@@ -66,6 +66,12 @@ df['vowels'] = df.text.map(lambda x: len(re.findall('уеыаоэяиюУЕЫА�
 
 #Число согласных
 
+#Число символов к просмотрам
+df['symbol_per_views'] = (df['symbols_count'] / df['views']) * 100
+
+#Число капса к просмотрам
+df['caps_per_views'] = (df['caps'] / df['views']) * 100
+
 # Убираем проценты, перегоняем данные в дробный числовой формат
 df.likes_per_views = df.likes_per_views.map(lambda x: re.sub('%', '', x)).astype(np.float32)
 
