@@ -46,6 +46,26 @@ df['www'] = df.text.map(lambda x: x.lower().count('www'))
 #Наличие ссылки
 df['have_www'] = df.text.map(lambda x: len(str(x)) for x in x if re.compile('www').search(x) print(int(1)))
 
+#Число смайликов
+df['emoji'] = df.text.map(lambda x: len(re.findall('[\U0001f600-\U0001f650]', x)))
+
+#Число ссылок
+df['www'] = df.text.map(lambda x: x.lower().count('www'))
+
+#Число букв
+df['leters'] = df.text.map(lambda x: len(re.findall('[a-я]', x))) + df.text.map(lambda x: len(re.findall('[А-Я]', x)))
+
+#Число запятых
+df['comma'] = df.text.map(lambda x: x.count('¶'))
+
+#Число вопросительных знаков
+df['interrogative'] = df.text.map(lambda x: x.count('?'))
+
+#Число гласных
+df['vowels'] = df.text.map(lambda x: len(re.findall('уеыаоэяиюУЕЫАОЭЯИЮ', x)))
+
+#Число согласных
+
 # Убираем проценты, перегоняем данные в дробный числовой формат
 df.likes_per_views = df.likes_per_views.map(lambda x: re.sub('%', '', x)).astype(np.float32)
 
